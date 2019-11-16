@@ -44,7 +44,7 @@ You can modify the parameters in there as you feel necessary.  BATCH_SIZE is pro
 
 Most notably you can turn previews to True to see image previews every x iterations.
 
-The outputs are a state_dict that can be used a checkpoint if wish, as well as after every epoch I output the model to an inference_[epoch].pt
+The outputs are a state_dict that can be used a checkpoint if you wish, as well as after every epoch I output the model to an inference_[epoch].pt
 
 ### Test
 predict.py contains functions that will allow you to test on training data and see the scores in relation to the baseline.  It also contains a method to let you iterate through inference models and test each one so you can compare and find the best performing.  You can also limit the testing to n number of train samples.
@@ -59,6 +59,8 @@ I have a notebook titled 'Results review' which will step by step go through the
 The network may further improve by utilizing more data augmentation and more epochs.  Some of the other competitors further broke images down from 128,128 images to 4 64,64 images and ran them that way.  I think it could definitely benefit here, but as mentioned above there wasn't an overfitting problem so the results may be minimal.  The other thing is I'm using a standard interpolate function to resize in the decoder from 128,128 to 384,384.  I had originally used a ConvTranspose2d, but I was getting a lot of artifacts that were not being removed.  I think with more data and more epoch's this could be resolved and would potentially make the result better.
 
 Another option would be to train the encoder to match a resized version of the high resolution image, and then training the decoder on the full size high resolution image.  This would allow us to make sure we have robust encoder before training the decoder, as opposed to training both at the same time.
+
+Finally, separating the datasets into the NIR and RED lightbands and training different networks may also see an increase in score.  I opted not to do this as it takes me long enough just to train one model, and two models with half the data I currently have was going to eat up a lot of time.
 
 ## Results
 ![Result1](images/plt_0.jpg)
