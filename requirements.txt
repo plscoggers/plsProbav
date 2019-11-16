@@ -1,0 +1,9 @@
+numpy
+scipy
+pandas
+scikit-image==0.14.2
+Pillow
+matplotlib
+seaborn
+watermark
+numba
