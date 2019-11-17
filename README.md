@@ -22,6 +22,8 @@ The model + baseline ensemble takes the result and averages it with the baseline
 
 I have posted the above model to [dropbox](https://www.dropbox.com/s/ney8pm5hmj6i1j4/inference_306.pt?dl=0).
 
+The structure of the model can be found in 'resnet_test.py'
+
 ## Conclusions
 
 It can be seen that the original SRGAN model can definitely be improved upon.  GANs can be somewhat unstable, that may be one reason for the score not differing significantly between training a discriminator and generator vs just building a standard encoder and decoder pair.  One way the original method could have improved is by using data augmentation.  The original model only used the original samples, which is restricted to about 1000 samples.  However, by flipping and rotating you can generate up to 9000 samples.  This allows the model to generalize more and avoid overfitting.
@@ -53,7 +55,7 @@ predict.py contains functions that will allow you to test on training data and s
 prepare_result.py takes in the model you would like to use and creates the prepared submission using the embiggen methods.  There is an option to ensemble with the bicubic interpolation result.  This has shown to improve results in this model, so it is recommended to be used.
 
 ### Notebook
-I have a notebook titled 'Results review' which will step by step go through the generation of the below results images.
+I have a notebook titled 'Results review' which will step by step go through the generation of the below results images.  I also have a second one 'Scoring' which reviews the scoring process for this competition, as well as takes a slightly closer look at the data.
 
 ## Possible improvements
 The network may further improve by utilizing more data augmentation and more epochs.  Some of the other competitors further broke images down from 128,128 images to 4 64,64 images and ran them that way.  I think it could definitely benefit here, but as mentioned above there wasn't an overfitting problem so the results may be minimal.  The other thing is I'm using a standard interpolate function to resize in the decoder from 128,128 to 384,384.  I had originally used a ConvTranspose2d, but I was getting a lot of artifacts that were not being removed.  I think with more data and more epoch's this could be resolved and would potentially make the result better.
