@@ -71,8 +71,13 @@ Finally, separating the datasets into the NIR and RED lightbands and training di
 
 ## References
 [Probav dataset](https://github.com/lfsimoes/probav)
+
 [Probav dataset paper](https://arxiv.org/abs/1907.01821)
+
 [Original SRGAN for probav dataset](https://github.com/ENNAJIHYassin/Proba-V)
+
 [DeepSum](https://arxiv.org/abs/1907.06490) - Competition winner
+
 [HighRes-Net](https://github.com/ElementAI/HighRes-net) - Runner up
+
 [Embiggen wrapper for probav dataset](https://github.com/lfsimoes/probav)
